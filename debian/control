@@ -6,7 +6,7 @@ Uploaders: Jon Rafkind <jon@rafkind.com>
 Standards-Version: 3.8.0
 Build-Depends: cdbs, quilt, debhelper (>= 7.0.0), patchutils,
  libfreetype6-dev, libjpeg-dev, libpng12-dev, libssl-dev, libxaw7-dev,
- xbitmaps, libxft-dev, libgl1-mesa-dev | libgl-dev, libpango1.0-0, libjpeg62,
+ xbitmaps, libxft-dev, libgl1-mesa-dev | libgl-dev, libpango1.0-0,
  libglu1-mesa-dev | libglu-dev, libx11-dev, libxrender-dev, libcairo2-dev
 Homepage: http://www.racket-lang.org/
 
