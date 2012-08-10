@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DrRacket
+Comment=DrRacket
+Exec=/usr/bin/drracket
+Icon=/usr/share/racket/collects/icons/plt-logo-red-diffuse.png
+Type=Application
+Categories=Development;
+Terminal=false
+StartupNotify=true
