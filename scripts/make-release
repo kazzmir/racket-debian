@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+from deb import *
+
+rebuild_work_directory()
+setup_plt_directory('stable')
+
+for distro in distros:
+    print "Create package for distro '%s'" % distro
+    create(distro, 'racket')
