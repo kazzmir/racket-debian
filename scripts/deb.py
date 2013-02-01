@@ -81,6 +81,8 @@ def setup_plt_directory(branch):
         os.chdir('plt')
         subprocess.call(['git', 'pull'])
         subprocess.call(['git', 'checkout', branch])
+        subprocess.call(['git', 'fetch'])
+        subprocess.call(['git', 'merge'])
         os.chdir('..')
 
     def copy_git_tree():
