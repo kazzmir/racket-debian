@@ -5,6 +5,10 @@ from deb import *
 rebuild_work_directory()
 setup_plt_directory('stable')
 
+import sys
+if len(sys.argv) > 1:
+    distros = sys.argv[1:]
+
 for distro in distros:
     print "Create package for distro '%s'" % distro
     create(distro, 'racket')
