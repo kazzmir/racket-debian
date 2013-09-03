@@ -78,32 +78,36 @@ def setup_plt_directory(branch):
     def pull_latest_git(branch):
         import os
         import subprocess
-        os.chdir('plt')
-        subprocess.call(['git', 'pull'])
-        subprocess.call(['git', 'checkout', branch])
-        subprocess.call(['git', 'fetch'])
-        subprocess.call(['git', 'merge', 'origin/%s' % branch])
-        os.chdir('..')
+        subprocess.call(['git', 'clone', '-b', 'stable', 'https://github.com/plt/racket/', 'plt'])
+        #os.chdir('plt')
+        #subprocess.call(['git', 'pull'])
+        #subprocess.call(['git', 'checkout', branch])
+        #subprocess.call(['git', 'fetch'])
+        #subprocess.call(['git', 'merge', 'origin/%s' % branch])
+        #os.chdir('..')
 
     def copy_git_tree():
-        import shutil
+        import shutil, os
         print "Copying plt tree"
+        shutil.rmtree('work', ignore_errors = True)
+        os.mkdir('work')
         shutil.copytree('plt', 'work/plt')
         shutil.rmtree('work/plt/.git', ignore_errors = True)
         print "Copying debian directory"
-        shutil.copytree('debian/debian', 'work/plt/debian')
+        shutil.copytree('debian', 'work/plt/debian')
 
     def patch_configure():
         import os, subprocess
         data = slurp('configure.patch')
-        os.chdir('work/plt/src')
-        process = subprocess.Popen(['patch', '-p0'], stdin = subprocess.PIPE)
+        os.chdir('work/plt')
+        process = subprocess.Popen(['patch', '-p1'], stdin = subprocess.PIPE)
         process.communicate(data)
         process.wait()
-        os.chdir('../../..')
+        os.chdir('../..')
 
     pull_latest_git(branch)
     copy_git_tree()
     patch_configure()
 
-distros = ['oneiric', 'natty', 'precise', 'maverick', 'lucid', 'karmic', 'quantal', 'raring']
+obsolete = ['oneiric', 'maverick', 'karmic']
+distros = ['lucid', 'raring', 'quantal', 'precise', 'saucy']
