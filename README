@@ -1,0 +1,1 @@
+Run scripts/make-nightly or scripts/make-release. Those scripts will try to check out a fresh copy of racket from github, copy in the debian scripts and create the .deb with debuild -S.
